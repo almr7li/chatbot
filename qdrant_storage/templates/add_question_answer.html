@@ -1,0 +1,19 @@
+<!-- chatbot/templates/chatbot/add_question_answer.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Question-Answer Pair</title>
+</head>
+<body>
+    <h2>Add Question-Answer Pair</h2>
+    <form method="post" action="{% url 'chatbot_answer' %}">
+        {% csrf_token %}
+        <input type="hidden" name="collection_name" value="{{ chatbot.collection_id }}">
+        <label for="question">Question:</label><br>
+        <textarea id="question" name="question"></textarea><br>
+        <label for="answer">Answer:</label><br>
+        <textarea id="answer" name="answer"></textarea><br>
+        <button type="submit">Add Question-Answer Pair</button>
+    </form>
+</body>
+</html>

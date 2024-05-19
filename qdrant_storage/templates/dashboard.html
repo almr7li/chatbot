@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header, footer {
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        .container {
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-container {
+            border: 1px solid #ccc;
+            height: 300px;
+            overflow-y: scroll;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .chat-container p {
+            margin-bottom: 10px;
+        }
+
+        #user-input {
+            width: calc(100% - 90px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        #send-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #send-button:hover {
+            background-color: #0056b3;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        .bot-status {
+            display: flex;
+            align-items: center;
+        }
+
+        .bot-status span {
+            margin-right: 10px;
+        }
+
+        .bot-toggle-button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .bot-toggle-button:hover {
+            background-color: #218838;
+        }
+
+        footer p {
+            font-size: 14px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Chatbot Dashboard</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <section class="chat-container" id="chat-container">
+            <div id="chat-messages"></div>
+        </section>
+        <section>
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button id="send-button" onclick="sendMessage()">Send</button>
+        </section>
+        <section>
+            <h2>Bot Status</h2>
+            <div class="bot-status">
+                <span>Bot is currently:</span>
+                <span id="bot-status">Active</span>
+            </div>
+            <button class="bot-toggle-button" onclick="toggleBot()">Toggle Bot</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Chatbot Project</p>
+    </footer>
+
+    <script>
+        function sendMessage() {
+            var userInput = document.getElementById('user-input').value;
+            document.getElementById('chat-messages').innerHTML += `<p>User: ${userInput}</p>`;
+            document.getElementById('user-input').value = '';
+            var chatContainer = document.getElementById('chat-container');
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+        function toggleBot() {
+            var botStatus = document.getElementById('bot-status');
+            if (botStatus.innerText === 'Active') {
+                botStatus.innerText = 'Inactive';
+            } else {
+                botStatus.innerText = 'Active';
+            }
+        }
+    </script>
+</body>
+</html>
